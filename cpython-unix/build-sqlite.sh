@@ -24,5 +24,8 @@ fi
 
 CFLAGS="${EXTRA_TARGET_CFLAGS} -DSQLITE_ENABLE_DBSTAT_VTAB -fPIC" CPPFLAGS="${EXTRA_TARGET_CFLAGS} -fPIC" LDFLAGS="${EXTRA_TARGET_LDFLAGS}" ./configure ${CONFIGURE_FLAGS}
 
+# Debug the pkg-config
+cat sqlite3.pc
+
 make -j ${NUM_CPUS}
 make -j ${NUM_CPUS} install DESTDIR=${ROOT}/out
