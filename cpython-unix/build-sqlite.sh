@@ -12,6 +12,9 @@ export PATH=${TOOLS_PATH}/${TOOLCHAIN}/bin:${TOOLS_PATH}/host/bin:$PATH
 tar -xf sqlite-autoconf-${SQLITE_VERSION}.tar.gz
 pushd sqlite-autoconf-${SQLITE_VERSION}
 
+if [[ "${TARGET_TRIPLE}" == *"linux"* ]]; then
+    export LIBS="${LIBS} -lm"
+fi
 
 CONFIGURE_FLAGS="--build=${BUILD_TRIPLE} --host=${TARGET_TRIPLE}"
 CONFIGURE_FLAGS="${CONFIGURE_FLAGS} --prefix /tools/deps --disable-shared"
