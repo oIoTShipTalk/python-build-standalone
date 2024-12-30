@@ -7,8 +7,12 @@ set -ex
 
 export ROOT=`pwd`
 
+pkg-config --modversion sqlite3 || echo "sqlite3.pc not found"
+
 export PATH=${TOOLS_PATH}/${TOOLCHAIN}/bin:${TOOLS_PATH}/host/bin:${TOOLS_PATH}/deps/bin:$PATH
 export PKG_CONFIG_PATH=${TOOLS_PATH}/deps/share/pkgconfig:${TOOLS_PATH}/deps/lib/pkgconfig
+
+pkg-config --modversion sqlite3 || echo "sqlite3.pc not found"
 
 # configure somehow has problems locating llvm-profdata even though it is in
 # PATH. The macro it is using allows us to specify its path via an
