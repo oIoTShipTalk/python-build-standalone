@@ -14,6 +14,8 @@ export PKG_CONFIG_PATH=${TOOLS_PATH}/deps/share/pkgconfig:${TOOLS_PATH}/deps/lib
 
 pkg-config --modversion sqlite3 || echo "sqlite3.pc not found"
 
+export PKG_CONFIG="pkg-config --static"
+
 # configure somehow has problems locating llvm-profdata even though it is in
 # PATH. The macro it is using allows us to specify its path via an
 # environment variable.
